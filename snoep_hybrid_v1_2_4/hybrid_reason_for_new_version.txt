@@ -1,0 +1,10 @@
+deprecated:
+-setSprite (from box!)
+
+IMPROVED:
+-createTextButton -> new functionality
+
+New:
+scrollable boxes (wish to implement, no 
+backward compatibility)
+Hybrid Light possible without sound for webapps.

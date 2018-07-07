@@ -1,0 +1,54 @@
+http://hybridgameengine.blogspot.nl/2015/10/introduction-of-plans-for-hybrid-125.html
+
+Introduction of plans for Hybrid 1.2.5
+Deprecated:
+
+-automatic context menu. (It is handy to be able to inspect stuff during debugging..)
+ if(Hybrid.showContextMenu==true)
+   _hybridSetupContextMenu();// right 
+// default is off!!!
+
+-automatic preloading -- added: Hybrid.startPreload(cb).. So you can override auto-preloading.
+ It will be possible to call this at any time, when the manifests/asset lib has changed
+ only unloaded assets will be loaded, so a loaded flag will be added and implemented
+Main reason:
+Using SVG as graphic source has become possible, however, rendering of SVG on canvas is slow.
+A preprocessing step is necessary, so we need control over preloading as generated imagery needs to be preloaded as well.
+
+-hybrid_layout  Hybrid.setAnimationEffect
+ replaces previous cssAnimationEffect . In HTML it uses the same techniques, but in Flash and other platforms, this needs to be emulateable. Some research must be done.
+
+-Parent keeping for future automatic resize and screen layout as well as mouse behaviour in gadgets.
+ The Hybrid Light has proven there is a need for common custom gadgets. These can be easily created if
+ Hybrid boxes keep parents. Mouse coordinates can then always be traced back to the parent Layer.
+
+
+-Library based function deployment.
+ Functions will be residing in a library, which can or cannot be linked at build time.
+ Grouping functions in libs will give clearer debug statements.
+ This means a rewrite, which might be postponed to Hybrid 1.3. It's pretty major..
+ But once in place the automatic creation of projects is just around the corner.
+
+-Adding of game-library.
+Surprisingly enough the Hybrid did not have e specific game library.
+
+The aim of the game-library is to faciltate common game tasks, like
+-creating worlds, camera's viewports, sectors. (for platform games and racing games)
+-creating matrix-fields for games like Tetris, bubble or match 3
+General gametools:
+-Definition/creation/destruction of game objects
+-rudimentary physics handling
+-Hittesting (pip, polygon in polygon)
+-Behavioural loops
+-Debug Draw
+-Predictable Random (previously located in Math)
+
+
+-PLANNED (1.2.6?):
+-Game-Sound -recipes using Audio-web-Api when necessary, maybe a PHP mp3 generation fallback  can be devised, but a gentle/silent fail might also be nice.
+Loading of sound assets has proven to be a great drain.
+A custom editor must be created.
+
+Also it might be possible to get Music from Midi like mods in the old days, but that's for a different version
+
+-Graphics recipes for icons etc, using a path based approach, with a limited integer grid (99x99). Makes for a very compressed graphic format. Custom editors must be created.
